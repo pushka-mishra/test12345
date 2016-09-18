@@ -1,12 +1,29 @@
 include header.html
 
-    <img src="https://s3-ap-southeast-1.amazonaws.com/picture-pushkar/screen-shot1.png" alt="screen-shot1
-" align="middle">
+#x.container
+  #x.hero-unit
+    p
+      | This app runs on #{hostname} (#{os}). Your request came from #{agent}.
+      | The system time is #{time.toLocaleString()}.
+      |  <strong>Page rendered using Node.js version #{nodeversion}</strong>.
 
-    <img src="https://s3-ap-southeast-1.amazonaws.com/picture-pushkar/screen-shot2.png" alt="screen-shot2
-" align="middle">
+#form-section.container
+  #x.hero-unit
+    form(method="post" class="comment-form")
+      label(for="comment") Leave a comment
+        input(type="text", name="comment" required="true" autocomplete="off")
+      input(type="submit", value="Send")
+    
+    ul(class="comments")
+      each comment in comments.reverse()
+        li
+          p(class="comment-content")= comment.text
+          p(class="comment-date")= (new Date(comment.date)).toLocaleString()
 
-    <img src="https://s3-ap-southeast-1.amazonaws.com/picture-pushkar/screen-shot3.png" alt="screen-shot3
-" align="middle">
+#x.container
+  #x.hero-unit
+    p
+      | Contact site admin via: <a href="mailto:#{admin}">#{admin}</a>
 
+include footer.html
 
